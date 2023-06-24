@@ -29,4 +29,7 @@ def main():
 
 
 if __name__ == "__main__":
+    print ("Özel ağlar olabilecek dizin ve dosyalar:")
     main()
+    print("\n Bilgisayarda D dizininde bulunan adres bilgileri:")
+    powerShell()
