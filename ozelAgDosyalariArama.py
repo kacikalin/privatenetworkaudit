@@ -31,9 +31,9 @@ def main():
     for file in files:
         print(file)
 ##Powershell komutu calistirabilmak icin powershell.exe nin oldugu C:\Windows\System32\WindowsPowerShell\v1.0\ dizininin Path'e eklenmesi gerekiyor.
-def powerShell():
-    p=subprocess.Popen('powershell.exe Get-ChildItem –Path D:\ -Recurse –File | Where-Object {$_.Name –match \'[a-fA-F0-9]{40}\'}' ,stdout=sys.stdout)
-    p.communicate()
+def powerShell_Dosyaici():
+    pd=subprocess.Popen('powershell.exe Get-ChildItem *.txt -Recurse -File | Where-Object { (Get-Content $_.FullName) -match &quot;[a-fA-F0-9]{40}&quot; -or (Get-Content $_.FullName) -match &quot;^0x[a-fA-F0-9]{40}&quot; }' ,stdout=sys.stdout)
+    pd.communicate()
     
 def getConnections():
     port="8545" #Buraya 1. adımda elde edilen konfigurasyon dosyasında bulunan port bilgileri girilir.
@@ -41,9 +41,9 @@ def getConnections():
     c.communicate()    
     
 if __name__ == "__main__":
-    print ("Özel ağlar olabilecek dizin ve dosyalar:")
+    print ("1.Özel ağlar olabilecek dizin ve dosyalar:")
     main()
-    print("\n Bilgisayarda D dizininde bulunan adres bilgileri:")
+    print("\n 2.Bilgisayarda D dizininde bulunan adres bilgileri:")
     powerShell()
     print("\n 3. Bilgisayar ile özel portlar üzerinden iletişim kuran bilgisayarlar")
     getConnections()
