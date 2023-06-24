@@ -34,8 +34,18 @@ def powerShell():
     p=subprocess.Popen('powershell.exe Get-ChildItem –Path D:\ -Recurse –File | Where-Object {$_.Name –match \'[a-fA-F0-9]{40}\'}' ,stdout=sys.stdout)
     p.communicate()
     
+def getConnections():
+    port="8545" #Buraya 1. adımda elde edilen konfigurasyon dosyasında bulunan port bilgileri girilir.
+    c = subprocess.Popen('powershell.exe netstat -ano | findstr :'+port,stdout=sys.stdout)
+    c.communicate()    
+    
 if __name__ == "__main__":
     print ("Özel ağlar olabilecek dizin ve dosyalar:")
     main()
     print("\n Bilgisayarda D dizininde bulunan adres bilgileri:")
     powerShell()
+    print("\n 3. Bilgisayar ile özel portlar üzerinden iletişim kuran bilgisayarlar")
+    getConnections()
+    print("\n 4.Remix IDE uzerinden akıllı sözleşme geliştirildiğinin kontrolü için tarayıcıdan https://remix.ethereum.org/ açıp contracts klasörünün altında eklenen sözleşme var mı diye kontrol ediniz.")
+    print("\n 5. Ganache UI üzerinden transaction input verisi alınarak kullanılacak yönteme parametre olarak verilir. ÖR: https://ethervm.io/decompile adresinde bulunan alana yapıştırılarak decompile edilir.")
+
