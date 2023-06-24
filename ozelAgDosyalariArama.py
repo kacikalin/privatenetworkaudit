@@ -1,7 +1,8 @@
 import os
 import re
 
-
+#Parametre olarak gonderilen kelimeleri dizinde arar. Gonderilen kelimeler private blokchain olustururken olusan klasor ve dosyalar icin
+#ozel olarak olusturulmustur.
 def dosyalari_bul(aranankelimeler, dizin):
 
     files = []
