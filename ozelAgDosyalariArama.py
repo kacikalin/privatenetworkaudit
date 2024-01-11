@@ -24,6 +24,11 @@ def powerShell():
 def main():
     aranankelimeler = ["contracts","geth","node-modules","nodes", "genesis","clef","truffle","hardhat","ganache"]
 
+    #HyperLedger networks:
+    aranankelimeler.extend(["crypto-config.yaml", "configtx.yaml", "docker-compose.yaml", "core.yaml", "connection-profiles.yaml"])
+
+    #EOSIO networks:
+    aranankelimeler.extend(["wallet.dat","nodeos","cleos"])
     dizin = "C:\\OrnekDizin"
 
     files = dosyalari_bul(aranankelimeler, dizin)
